@@ -8,7 +8,7 @@
     {
         public static List<string> GetStringList()
         {
-            return Enumerable.Range(0, 1000).Select(i => Guid.NewGuid().ToString("N")).ToList();
+            return Enumerable.Range(0, 10000).Select(i => Guid.NewGuid().ToString("N")).ToList();
         }
     }
 }

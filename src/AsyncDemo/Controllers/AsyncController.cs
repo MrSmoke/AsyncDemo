@@ -19,7 +19,7 @@
         {
             var strings = await _dataRepository.GetStringsAsyncConfigureAwait(false).ConfigureAwait(false);
 
-            return Ok(strings);
+            return Ok("ok");
         }
 
 

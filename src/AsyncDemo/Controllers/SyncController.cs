@@ -18,7 +18,7 @@
         {
             var strings = _dataRepository.GetStrings();
 
-            return Ok(strings);
+            return Ok("ok");
         }
 
         [Route("seed")]

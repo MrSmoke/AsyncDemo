@@ -17,22 +17,25 @@ namespace AsyncDemo
             _connectionString = connectionString;
         }
 
+        private const string stupid_select = "SELECT sql_no_cache substr(str, 1, 1) AS groupped FROM demo.strings s group by groupped";
+        private const string big_select = "SELECT sql_no_cache * FROM demo.strings";
+
         public async Task<IEnumerable<string>> GetStringsAsyncConfigureAwait(bool continueOnCapturedContext)
         {
             using (var conn = GetConnection())
-                return await conn.QueryAsync<string>("SELECT str FROM strings").ConfigureAwait(continueOnCapturedContext);
+                return await conn.QueryAsync<string>(big_select).ConfigureAwait(continueOnCapturedContext);
         }
 
         public Task<IEnumerable<string>> GetStringsAsyncGottcha()
         {
             using (var conn = GetConnection())
-                return conn.QueryAsync<string>("SELECT str FROM strings");
+                return conn.QueryAsync<string>(big_select);
         }
 
         public IEnumerable<string> GetStrings()
         {
             using (var conn = GetConnection())
-                return conn.Query<string>("SELECT str FROM strings");
+                return conn.Query<string>(big_select);
         }
 
         public void Seed(List<string> strings)
